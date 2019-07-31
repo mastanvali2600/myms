@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,17 +16,21 @@ import com.example.demo.repository.AttendanceRepository;
 public class AttendanceService {
 	@Autowired
 	private AttendanceRepository attendanceRepository;
-	
-	public void save(Date date,Student student,Subject subject,boolean isPresent) {
-		AttendancePK attendancePK=new AttendancePK();
+
+	public void save(Date date, Student student, Subject subject, boolean isPresent) {
+		AttendancePK attendancePK = new AttendancePK();
 		attendancePK.setHomeWorkDate(date);
 		attendancePK.setStudent(student);
 		attendancePK.setSubject(subject);
-		
-		Attendance attendance=new Attendance();
+
+		Attendance attendance = new Attendance();
 		attendance.setAttendancePK(attendancePK);
 		attendance.setPresent(isPresent);
-		
+
 		attendanceRepository.save(attendance);
+	}
+
+	public List<Attendance> findAll() {
+		return attendanceRepository.findAll();
 	}
 }
