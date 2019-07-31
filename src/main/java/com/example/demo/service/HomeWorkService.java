@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,9 @@ public class HomeWorkService {
 		homeWork.setHomeWorkinfo(homeWorkinfo);
 		
 		homeWorkRepository.save(homeWork);
+	}
+	
+	public List<HomeWork> findAll(){
+		return homeWorkRepository.findAll();
 	}
 }

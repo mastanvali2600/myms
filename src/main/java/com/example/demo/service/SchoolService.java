@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,13 @@ public class SchoolService {
 		school.setName(name);
 		school.setAddress(address);
 		schoolRepository.save(school);
+	}
+	
+	public List<School> findAll(){
+		return schoolRepository.findAll();
+	}
+	
+	public School findOne(String id) {
+		return schoolRepository.findOne(id);
 	}
 }

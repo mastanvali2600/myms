@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,11 @@ public class StudentService {
 		student.setClassInfo(classInfo);
 		
 		studentRepository.save(student);
+	}
+	public List<Student> findAll(){
+		return studentRepository.findAll();
+	}
+	public Student findOne(String id) {
+		return studentRepository.findOne(id);
 	}
 }

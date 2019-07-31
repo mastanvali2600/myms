@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,13 @@ public class ParentService {
 		
 		parentRepository.save(parent);
 		
+	}
+	
+	public List<Parent> findAll(){
+		return parentRepository.findAll();
+	}
+	
+	public Parent findOne(String id) {
+		return parentRepository.findOne(id);
 	}
 }

@@ -24,4 +24,7 @@ public class ClassInfoService {
 	public List<ClassInfo> findAll(){
 		return classInfoRepository.findAll();
 	}
+	public ClassInfo findOne(String id) {
+		return classInfoRepository.findOne(id);
+	}
 }

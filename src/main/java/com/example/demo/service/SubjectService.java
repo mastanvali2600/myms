@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,11 @@ public class SubjectService {
 		subject.setSubjectId(subjectId);
 		
 		subjectRepository.save(subject);
+	}
+	public List<Subject> findAll(){
+		return subjectRepository.findAll();
+	}
+	public Subject findOne(String id) {
+		return subjectRepository.findOne(id);
 	}
 }
