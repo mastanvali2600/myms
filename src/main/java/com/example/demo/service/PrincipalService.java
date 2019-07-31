@@ -6,13 +6,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Faculty;
 import com.example.demo.model.Principal;
+import com.example.demo.model.School;
+import com.example.demo.repository.FacultyRepository;
 import com.example.demo.repository.PrincipalRepository;
+import com.example.demo.repository.SchoolRepository;
 
 @Service
 public class PrincipalService {
 	@Autowired
 	private PrincipalRepository principalRepository;
+	
+	@Autowired
+	private SchoolRepository schoolRepository;
+	
+	@Autowired
+	private FacultyRepository facultyRepository;
 	
 	public List<Principal> findAll(){
 		return principalRepository.findAll();
@@ -32,9 +42,33 @@ public class PrincipalService {
 		principal1.setPassword("abcE");
 		principal1.setPhoneNumber("9999999991");
 		
+
+		School school=new School();
+		school.setSchoolId("Sc1");
+		school.setName("Zph School");
+		school.setAddress("Vkpd");
+		
+		principal.setSchool(school);
+		
+		Faculty faculty=new Faculty();
+		faculty.setFacultyId("fc1");
+		faculty.setName("Sriman");
+		faculty.setEmail("sriman@gmail.com");
+		faculty.setPassword("sriman");
+		faculty.setPhoneNumber("8888888888");
+		faculty.setAddress("Hyd");
+
+		schoolRepository.save(school);
+		
 		List<Principal> principals =new ArrayList<Principal>();
 		principals.add(principal);
 		principals.add(principal1);
+		
+		
 		principalRepository.save(principals);
+		
+		faculty.setPrincipal(principal);
+
+		facultyRepository.save(faculty);
 	}
 }

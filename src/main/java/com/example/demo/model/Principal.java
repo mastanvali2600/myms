@@ -1,7 +1,11 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Principal {
@@ -11,6 +15,10 @@ public class Principal {
 	private String email;
 	private String phoneNumber;
 	private String password;
+	@OneToOne
+	private School school;
+	@OneToMany(mappedBy = "principal")
+	private List<Faculty> faculties;
 	public String getPrincipalJoinId() {
 		return principalJoinId;
 	}
@@ -41,10 +49,27 @@ public class Principal {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
+	}
+	public List<Faculty> getFaculties() {
+		return faculties;
+	}
+	public void setFaculties(List<Faculty> faculties) {
+		this.faculties = faculties;
+	}
 	@Override
 	public String toString() {
 		return "Principal [principalJoinId=" + principalJoinId + ", name=" + name + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", password=" + password + "]";
+				+ ", phoneNumber=" + phoneNumber + ", password=" + password + ", school=" + school + ", faculties="
+				+ faculties + "]";
 	}
+	
+	
+	
 		
 }
