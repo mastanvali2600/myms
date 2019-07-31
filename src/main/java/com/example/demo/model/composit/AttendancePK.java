@@ -1,55 +1,59 @@
 package com.example.demo.model.composit;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.example.demo.model.Student;
 import com.example.demo.model.Subject;
-import com.example.demo.model.Test;
 
 @Embeddable
-public class MarkPrimaryKey implements Serializable {
-
+public class AttendancePK implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
+	@Column(nullable = false,updatable = false)
+	private Date homeWorkDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "studentId")
-	private Student students;
+	private Student student;
 	
 	@ManyToOne
 	@JoinColumn(name = "subjectId")
 	private Subject subject;
-	
-	@ManyToOne
-	@JoinColumn(name = "testId")
-	private Test test;
-	
-	public Student getStudents() {
-		return students;
+
+	public Date getHomeWorkDate() {
+		return homeWorkDate;
 	}
-	public void setStudents(Student students) {
-		this.students = students;
+
+	public void setHomeWorkDate(Date homeWorkDate) {
+		this.homeWorkDate = homeWorkDate;
 	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	public Subject getSubject() {
 		return subject;
 	}
+
 	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	public Test getTest() {
-		return test;
-	}
-	public void setTest(Test test) {
-		this.test = test;
-	}
+
 	@Override
 	public String toString() {
-		return "MarkPrimaryKey [students=" + students + ", subject=" + subject + ", test=" + test + "]";
+		return "AttendancePK [homeWorkDate=" + homeWorkDate + ", student=" + student + ", subject=" + subject + "]";
 	}
 	
 	
-
 }

@@ -16,6 +16,12 @@ public class Subject {
 	
 	@OneToMany(mappedBy = "markPrimaryKey.subject",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
+
+	@OneToMany(mappedBy = "homeWorkPK.subject")
+	private Set<HomeWork> homeWorks;
+	
+	@OneToMany(mappedBy = "attendancePK.subject")
+	private Set<Attendance> attendances;
 	
 	public String getSubjectId() {
 		return subjectId;
@@ -38,7 +44,8 @@ public class Subject {
 	}
 	@Override
 	public String toString() {
-		return "Subject [subjectId=" + subjectId + ", name=" + name + "]";
+		return "Subject [subjectId=" + subjectId + ", name=" + name + ", marks=" + marks + ", homeWorks=" + homeWorks
+				+ ", attendances=" + attendances + "]";
 	}
-	
+
 }

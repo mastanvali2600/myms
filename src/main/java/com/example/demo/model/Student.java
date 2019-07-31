@@ -27,6 +27,9 @@ public class Student {
 	
 	@OneToMany(mappedBy = "markPrimaryKey.students",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
+	
+	@OneToMany(mappedBy = "attendancePK.student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private Set<Attendance> attendance;
 
 	public String getStudentId() {
 		return studentId;
@@ -76,11 +79,20 @@ public class Student {
 	public void setMarks(Set<Mark> marks) {
 		this.marks = marks;
 	}
+	
+	public Set<Attendance> getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Set<Attendance> attendance) {
+		this.attendance = attendance;
+	}
 
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", rollNumber=" + rollNumber + ", name=" + name + ", classInfo="
-				+ classInfo + ", parent=" + parent + "]";
+				+ classInfo + ", parent=" + parent + ", marks=" + marks + ", attendance=" + attendance + "]";
 	}
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +19,9 @@ public class ClassInfo {
 	
 	@OneToMany(mappedBy = "classInfo")
 	private List<Student> students;
+	
+	@OneToMany(mappedBy = "homeWorkPK.classInfo")
+	private Set<HomeWork> homeWorks;
 
 	public String getClassSectionId() {
 		return classSectionId;
@@ -49,6 +53,10 @@ public class ClassInfo {
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
+	}
+	
+	public String createPK(String className,String sectionName) {
+		return className+"-"+sectionName;
 	}
 
 	@Override

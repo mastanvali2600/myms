@@ -1,13 +1,16 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Attendance;
 import com.example.demo.model.ClassInfo;
 import com.example.demo.model.Faculty;
+import com.example.demo.model.HomeWork;
 import com.example.demo.model.Mark;
 import com.example.demo.model.Parent;
 import com.example.demo.model.Principal;
@@ -15,9 +18,13 @@ import com.example.demo.model.School;
 import com.example.demo.model.Student;
 import com.example.demo.model.Subject;
 import com.example.demo.model.Test;
+import com.example.demo.model.composit.AttendancePK;
+import com.example.demo.model.composit.HomeWorkPK;
 import com.example.demo.model.composit.MarkPrimaryKey;
+import com.example.demo.repository.AttendanceRepository;
 import com.example.demo.repository.ClassInfoRepository;
 import com.example.demo.repository.FacultyRepository;
+import com.example.demo.repository.HomeWorkRepository;
 import com.example.demo.repository.MarksRepository;
 import com.example.demo.repository.ParentRepository;
 import com.example.demo.repository.PrincipalRepository;
@@ -55,6 +62,12 @@ public class PrincipalService {
 	
 	@Autowired
 	private MarksRepository marksRepository;
+	
+	@Autowired
+	private HomeWorkRepository homeWorkRepository;
+	
+	@Autowired
+	private AttendanceRepository attendanceRepository;
 	
 	public List<Principal> findAll(){
 		return principalRepository.findAll();
@@ -168,5 +181,27 @@ public class PrincipalService {
 		
 		marksRepository.save(mark);
 		marksRepository.save(mark1);
+		
+		HomeWorkPK homeWorkPK=new HomeWorkPK();
+		homeWorkPK.setClassInfo(classInfo);
+		homeWorkPK.setSubject(subject);
+		homeWorkPK.setHomeWorkDate(new Date());
+		
+		HomeWork homeWork=new HomeWork();
+		homeWork.setHomeWorkPK(homeWorkPK);
+		homeWork.setHomeWorkinfo("To day you free");
+		
+		homeWorkRepository.save(homeWork);
+		
+		AttendancePK attendancePK=new AttendancePK();
+		attendancePK.setStudent(student);
+		attendancePK.setSubject(subject);
+		attendancePK.setHomeWorkDate(new Date());
+		
+		Attendance attendance=new Attendance();
+		attendance.setAttendancePK(attendancePK);
+		attendance.setPresent(false);
+		
+		attendanceRepository.save(attendance);
 	}
 }
