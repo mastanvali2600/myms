@@ -8,16 +8,23 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.ClassInfo;
 import com.example.demo.model.Faculty;
+import com.example.demo.model.Mark;
 import com.example.demo.model.Parent;
 import com.example.demo.model.Principal;
 import com.example.demo.model.School;
 import com.example.demo.model.Student;
+import com.example.demo.model.Subject;
+import com.example.demo.model.Test;
+import com.example.demo.model.composit.MarkPrimaryKey;
 import com.example.demo.repository.ClassInfoRepository;
 import com.example.demo.repository.FacultyRepository;
+import com.example.demo.repository.MarksRepository;
 import com.example.demo.repository.ParentRepository;
 import com.example.demo.repository.PrincipalRepository;
 import com.example.demo.repository.SchoolRepository;
 import com.example.demo.repository.StudentRepository;
+import com.example.demo.repository.SubjectRepository;
+import com.example.demo.repository.TestRepository;
 
 @Service
 public class PrincipalService {
@@ -39,6 +46,15 @@ public class PrincipalService {
 	
 	@Autowired
 	private ClassInfoRepository classInfoRepository;
+	
+	@Autowired
+	private SubjectRepository subjectRepository;
+	
+	@Autowired
+	private TestRepository testRepository;
+	
+	@Autowired
+	private MarksRepository marksRepository;
 	
 	public List<Principal> findAll(){
 		return principalRepository.findAll();
@@ -110,5 +126,47 @@ public class PrincipalService {
 		student.setClassInfo(classInfo);
 		
 		studentRepository.save(student);
+		
+		Subject subject=new Subject();
+		subject.setName("Java");
+		subject.setSubjectId("1101");
+		
+		subjectRepository.save(subject);
+		
+		Test test=new Test();
+		test.setTestId("1102");
+		test.setName("Unit Test 1");
+		
+		testRepository.save(test);
+		
+		Test test1=new Test();
+		test1.setTestId("1103");
+		test1.setName("Unit Test 2");
+		
+		testRepository.save(test1);
+		
+		
+		MarkPrimaryKey markPrimaryKey=new MarkPrimaryKey();
+		markPrimaryKey.setStudents(student);
+		markPrimaryKey.setSubject(subject);
+		markPrimaryKey.setTest(test);
+		
+		Mark mark=new Mark();
+		mark.setMarkPrimaryKey(markPrimaryKey);
+		mark.setMarks(10l);
+		mark.setOutMarks(100l);
+		
+		MarkPrimaryKey markPrimaryKey1=new MarkPrimaryKey();
+		markPrimaryKey1.setStudents(student);
+		markPrimaryKey1.setSubject(subject);
+		markPrimaryKey1.setTest(test1);
+		
+		Mark mark1=new Mark();
+		mark1.setMarkPrimaryKey(markPrimaryKey1);
+		mark1.setMarks(90l);
+		mark1.setOutMarks(100l);
+		
+		marksRepository.save(mark);
+		marksRepository.save(mark1);
 	}
 }
