@@ -26,7 +26,10 @@ public class Principal {
 	@OneToMany(mappedBy = "principal")
 	private Set<Faculty> faculties;
 
-	
+	public Principal() {
+		super();
+	}
+
 	private Principal(String principalJoinId, String name, String email, String phoneNumber, String password,
 			School school) {
 		super();

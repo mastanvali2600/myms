@@ -23,6 +23,10 @@ public class Subject {
 	@OneToMany(mappedBy = "id.subject")
 	private Set<Attendance> attendances;
 
+	private Subject() {
+		super();
+	}
+
 	private Subject(String subjectId, String name) {
 		super();
 		this.subjectId = subjectId;

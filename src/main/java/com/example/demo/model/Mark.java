@@ -13,6 +13,11 @@ public class Mark {
 	private Long marks;
 	private Long outMarks;
 	
+	private Mark() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private Mark(MarkPrimaryKey id, Long marks, Long outMarks) {
 		super();
 		this.id = id;

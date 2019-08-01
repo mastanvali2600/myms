@@ -19,6 +19,10 @@ public class Test {
 	@OneToMany(mappedBy = "id.test",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
 
+	private Test() {
+		super();
+	}
+
 	private Test(String testId, String name) {
 		super();
 		this.testId = testId;

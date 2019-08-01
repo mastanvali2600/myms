@@ -42,6 +42,10 @@ public class Student {
 	@OneToMany(mappedBy = "id.student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Attendance> attendance;
 
+	private Student() {
+		super();
+	}
+
 	private Student(String studentId, String rollNumber, String name, ClassInfo classInfo, Parent parent) {
 		super();
 		this.studentId = studentId;

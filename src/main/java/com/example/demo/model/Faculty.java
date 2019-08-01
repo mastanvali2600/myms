@@ -29,7 +29,10 @@ public class Faculty {
 	@JsonIdentityReference(alwaysAsId = true)
 	private Principal principal;
 	
-	
+	public Faculty() {
+		super();
+	}
+
 	private Faculty(String facultyId, String name, String email, String password, String phoneNumber, String address,
 			Principal principal) {
 		super();

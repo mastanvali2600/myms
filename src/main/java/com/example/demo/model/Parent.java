@@ -25,6 +25,10 @@ public class Parent {
 	@OneToMany(mappedBy = "parent")
 	private Set<Student> students;
 
+	private Parent() {
+		super();
+	}
+
 	private Parent(String parentId, String name, String phoneNumber, Principal principal) {
 		super();
 		this.parentId = parentId;

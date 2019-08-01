@@ -36,6 +36,11 @@ public class MarkPrimaryKey implements Serializable {
 	@JsonIdentityReference(alwaysAsId = true)
 	private Test test;
 	
+	private MarkPrimaryKey() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private MarkPrimaryKey(Student students, Subject subject, Test test) {
 		super();
 		this.students = students;

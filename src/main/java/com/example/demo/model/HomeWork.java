@@ -13,7 +13,10 @@ public class HomeWork {
 	
 	private String homeWorkinfo;
 
-	
+	private HomeWork() {
+		super();
+	}
+
 	private HomeWork(HomeWorkPK id, String homeWorkinfo) {
 		super();
 		this.id = id;

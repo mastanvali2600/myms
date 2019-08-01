@@ -32,6 +32,9 @@ public class AttendancePK implements Serializable{
 	@JsonIdentityReference(alwaysAsId = true)
 	private Subject subject;
 	
+	private AttendancePK() {
+		super();
+	}
 	private AttendancePK(String homeWorkDate, Student student, Subject subject) {
 		this.homeWorkDate = homeWorkDate;
 		this.student = student;

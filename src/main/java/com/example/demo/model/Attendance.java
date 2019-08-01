@@ -12,6 +12,10 @@ public class Attendance {
 	
 	private boolean isPresent;
 	
+	private Attendance() {
+		super();
+	}
+
 	private Attendance(AttendancePK id, boolean isPresent) {
 		super();
 		this.id = id;

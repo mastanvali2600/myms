@@ -22,8 +22,11 @@ public class ClassInfo {
 	
 	@OneToMany(mappedBy = "id.classInfo")
 	private Set<HomeWork> homeWorks;
-
 	
+	private ClassInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	private ClassInfo(String className, String sectionName) {
 		super();

@@ -33,7 +33,10 @@ public class HomeWorkPK implements Serializable{
 	@JsonIdentityReference(alwaysAsId = true)
 	private Subject subject;
 
-	public HomeWorkPK(String homeWorkDate, ClassInfo classInfo, Subject subject) {
+	private HomeWorkPK() {
+		super();
+	}
+	private HomeWorkPK(String homeWorkDate, ClassInfo classInfo, Subject subject) {
 		super();
 		this.homeWorkDate = homeWorkDate;
 		this.classInfo = classInfo;

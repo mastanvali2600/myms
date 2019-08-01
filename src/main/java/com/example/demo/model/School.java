@@ -10,6 +10,10 @@ public class School {
 	private String name;
 	private String address;
 
+	private School() {
+		super();
+	}
+
 	private School(String schoolId, String name, String address) {
 		super();
 		this.schoolId = schoolId;
