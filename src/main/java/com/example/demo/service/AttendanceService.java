@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import com.example.demo.model.Student;
 import com.example.demo.model.Subject;
 import com.example.demo.model.composit.AttendancePK;
 import com.example.demo.repository.AttendanceRepository;
+import com.example.demo.utils.DateUtils;
 
 @Service
 public class AttendanceService {
@@ -19,16 +19,8 @@ public class AttendanceService {
 	private AttendanceRepository attendanceRepository;
 
 	public void save(LocalDate date, Student student, Subject subject, boolean isPresent) {
-		AttendancePK attendancePK = new AttendancePK();
-		attendancePK.setHomeWorkDate(date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY")));
-		attendancePK.setStudent(student);
-		attendancePK.setSubject(subject);
-
-		Attendance attendance = new Attendance();
-		attendance.setId(attendancePK);;
-		attendance.setPresent(isPresent);
-
-		attendanceRepository.save(attendance);
+		attendanceRepository
+				.save(Attendance.instance(AttendancePK.instance(DateUtils.formate(date), student, subject), isPresent));
 	}
 
 	public List<Attendance> findAll() {

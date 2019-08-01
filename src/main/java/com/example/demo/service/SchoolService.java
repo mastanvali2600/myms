@@ -15,11 +15,7 @@ public class SchoolService {
 	private SchoolRepository schoolRepository;
 	
 	public void save(String schoolId, String name, String address) {
-		School school=new School();
-		school.setSchoolId(schoolId);
-		school.setName(name);
-		school.setAddress(address);
-		schoolRepository.save(school);
+		schoolRepository.save(School.instance(schoolId, name, address));
 	}
 	
 	public List<School> findAll(){

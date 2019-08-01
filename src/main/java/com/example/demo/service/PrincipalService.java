@@ -19,15 +19,7 @@ public class PrincipalService {
 	}
 	
 	public void save(String principalJoinId,String name,String email,String password,String phoneNumber,School school) {
-		Principal principal=new Principal();
-		principal.setPrincipalJoinId(principalJoinId);
-		principal.setName(name);
-		principal.setEmail(email);
-		principal.setPassword(password);
-		principal.setPhoneNumber(phoneNumber);
-		principal.setSchool(school);
-		
-		principalRepository.save(principal);
+		principalRepository.save(Principal.instance(principalJoinId, name, email, phoneNumber, password, school));
 	}
 	
 	public Principal findOne(String principalJoinId) {

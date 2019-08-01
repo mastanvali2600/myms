@@ -14,11 +14,7 @@ public class ClassInfoService {
 	private ClassInfoRepository classInfoRepository;
 	
 	public void save(String className,String sectionName) {
-		ClassInfo classInfo=new ClassInfo();
-		classInfo.setClassName(className);
-		classInfo.setSectionName(sectionName);
-		classInfo.setClassSectionId(ClassInfo.createPK(className, sectionName));
-		classInfoRepository.save(classInfo);
+		classInfoRepository.save(ClassInfo.instance(className, sectionName));
 	}
 	
 	public List<ClassInfo> findAll(){

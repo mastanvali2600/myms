@@ -11,23 +11,25 @@ public class Attendance {
 	private AttendancePK id;
 	
 	private boolean isPresent;
+	
+	private Attendance(AttendancePK id, boolean isPresent) {
+		super();
+		this.id = id;
+		this.isPresent = isPresent;
+	}
+	
+	public static Attendance instance(AttendancePK id, boolean isPresent) {
+		return new Attendance(id, isPresent);
+	}
 
 	public AttendancePK getId() {
 		return id;
 	}
-
-	public void setId(AttendancePK id) {
-		this.id = id;
-	}
-
+	
 	public boolean isPresent() {
 		return isPresent;
 	}
-
-	public void setPresent(boolean isPresent) {
-		this.isPresent = isPresent;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Attendance [attendancePK=" + id + ", isPresent=" + isPresent + "]";

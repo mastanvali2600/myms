@@ -13,20 +13,23 @@ public class HomeWork {
 	
 	private String homeWorkinfo;
 
+	
+	private HomeWork(HomeWorkPK id, String homeWorkinfo) {
+		super();
+		this.id = id;
+		this.homeWorkinfo = homeWorkinfo;
+	}
+
+	public static HomeWork instance(HomeWorkPK id, String homeWorkinfo) {
+		return new HomeWork(id, homeWorkinfo);
+	}
+
 	public HomeWorkPK getId() {
 		return id;
 	}
-
-	public void setId(HomeWorkPK id) {
-		this.id = id;
-	}
-
+	
 	public String getHomeWorkinfo() {
 		return homeWorkinfo;
-	}
-
-	public void setHomeWorkinfo(String homeWorkinfo) {
-		this.homeWorkinfo = homeWorkinfo;
 	}
 
 	@Override

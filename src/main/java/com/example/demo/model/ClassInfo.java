@@ -23,34 +23,23 @@ public class ClassInfo {
 	@OneToMany(mappedBy = "id.classInfo")
 	private Set<HomeWork> homeWorks;
 
+	
+	
+	private ClassInfo(String className, String sectionName) {
+		super();
+		this.classSectionId = createPK(className, sectionName);
+		this.className = className;
+		this.sectionName = sectionName;
+	}
+	public static ClassInfo instance(String className, String sectionName) {
+		return new ClassInfo(className, sectionName);
+	}
 	public String getClassSectionId() {
 		return classSectionId;
 	}
 
-	public void setClassSectionId(String classSectionId) {
-		this.classSectionId = classSectionId;
-	}
-
 	public String getClassName() {
 		return className;
-	}
-
-	public void setClassName(String className) {
-		this.className = className;
-	}
-
-	public String getSectionName() {
-		return sectionName;
-	}
-
-	public void setSectionName(String sectionName) {
-		this.sectionName = sectionName;
-	}
-
-	
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
 	}
 	
 	public static String createPK(String className,String sectionName) {

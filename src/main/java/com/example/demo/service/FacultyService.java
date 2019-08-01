@@ -17,16 +17,7 @@ public class FacultyService {
 
 	public void save(String facultyId, String name, String email, String password, String address, String phoneNumber,
 			Principal principal) {
-		Faculty faculty = new Faculty();
-		faculty.setAddress(address);
-		faculty.setName(name);
-		faculty.setFacultyId(facultyId);
-		faculty.setEmail(email);
-		faculty.setPassword(password);
-		faculty.setPhoneNumber(phoneNumber);
-		faculty.setPrincipal(principal);
-
-		facultyRepository.save(faculty);
+		facultyRepository.save(Faculty.instance(facultyId, name, email, password, phoneNumber, address, principal));
 	}
 
 	public List<Faculty> findAll() {

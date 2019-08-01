@@ -19,17 +19,8 @@ public class MarksService {
 	private MarksRepository marksRepository;
 	
 	public void save(Student student, Subject subject,Test test, Long marks , Long outMarks) {
-		MarkPrimaryKey markPrimaryKey=new MarkPrimaryKey();
-		markPrimaryKey.setStudents(student);
-		markPrimaryKey.setSubject(subject);
-		markPrimaryKey.setTest(test);
-		
-		Mark mark=new Mark();
-		mark.setId(markPrimaryKey);
-		mark.setMarks(marks);
-		mark.setOutMarks(outMarks);
-		
-		marksRepository.save(mark);
+		marksRepository.save(
+				Mark.instance(MarkPrimaryKey.instance(student, subject, test), marks, outMarks));
 	}
 	
 	public List<Mark> findAll(){

@@ -17,14 +17,7 @@ public class StudentService {
 	private StudentRepository studentRepository;
 	
 	public void save(String studentId, String name, String rollNumber, Parent parent, ClassInfo classInfo) {
-		Student student=new Student();
-		student.setStudentId(studentId);
-		student.setName(name);
-		student.setRollNumber(rollNumber);
-		student.setParent(parent);
-		student.setClassInfo(classInfo);
-		
-		studentRepository.save(student);
+		studentRepository.save(Student.instance(studentId, rollNumber, name, classInfo, parent));
 	}
 	public List<Student> findAll(){
 		return studentRepository.findAll();

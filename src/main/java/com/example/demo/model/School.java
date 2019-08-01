@@ -9,24 +9,30 @@ public class School {
 	private String schoolId;
 	private String name;
 	private String address;
+
+	private School(String schoolId, String name, String address) {
+		super();
+		this.schoolId = schoolId;
+		this.name = name;
+		this.address = address;
+	}
+
+	public static School instance(String schoolId, String name, String address) {
+		return new School(schoolId, name, address);
+	}
+	
 	public String getSchoolId() {
 		return schoolId;
 	}
-	public void setSchoolId(String schoolId) {
-		this.schoolId = schoolId;
-	}
+
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+
 	@Override
 	public String toString() {
 		return "School [schoolId=" + schoolId + ", name=" + name + ", address=" + address + "]";

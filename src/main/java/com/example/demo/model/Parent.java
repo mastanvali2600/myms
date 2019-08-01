@@ -24,35 +24,35 @@ public class Parent {
 	
 	@OneToMany(mappedBy = "parent")
 	private Set<Student> students;
-	
-	public String getParentId() {
-		return parentId;
-	}
-	public void setParentId(String parentId) {
+
+	private Parent(String parentId, String name, String phoneNumber, Principal principal) {
+		super();
 		this.parentId = parentId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
 		this.name = name;
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-	public Principal getPrincipal() {
-		return principal;
-	}
-	public void setPrincipal(Principal principal) {
 		this.principal = principal;
 	}
 	
-	public void setStudents(Set<Student> students) {
-		this.students = students;
+	public static Parent instance(String parentId, String name, String phoneNumber, Principal principal) {
+		return new Parent(parentId, name, phoneNumber, principal);
 	}
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public Principal getPrincipal() {
+		return principal;
+	}
+
 	@Override
 	public String toString() {
 		return "Parent [parentId=" + parentId + ", name=" + name + ", phoneNumber=" + phoneNumber + ", principal="

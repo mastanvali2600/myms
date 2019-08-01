@@ -15,11 +15,7 @@ public class TestService {
 	private TestRepository testRepository;
 
 	public void save(String testId, String name) {
-		Test test = new Test();
-		test.setTestId(testId);
-		test.setName(name);
-
-		testRepository.save(test);
+		testRepository.save(Test.instance(testId, name));
 	}
 	public List<Test> findAll(){
 		return testRepository.findAll();

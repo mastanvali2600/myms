@@ -36,29 +36,32 @@ public class MarkPrimaryKey implements Serializable {
 	@JsonIdentityReference(alwaysAsId = true)
 	private Test test;
 	
+	private MarkPrimaryKey(Student students, Subject subject, Test test) {
+		super();
+		this.students = students;
+		this.subject = subject;
+		this.test = test;
+	}
+
+	public static MarkPrimaryKey instance(Student students, Subject subject, Test test) {
+		return new MarkPrimaryKey(students, subject, test);
+	}
+	
 	public Student getStudents() {
 		return students;
 	}
-	public void setStudents(Student students) {
-		this.students = students;
-	}
+
 	public Subject getSubject() {
 		return subject;
 	}
-	public void setSubject(Subject subject) {
-		this.subject = subject;
-	}
+
 	public Test getTest() {
 		return test;
 	}
-	public void setTest(Test test) {
-		this.test = test;
-	}
+
 	@Override
 	public String toString() {
 		return "MarkPrimaryKey [students=" + students + ", subject=" + subject + ", test=" + test + "]";
 	}
-	
-	
 
 }

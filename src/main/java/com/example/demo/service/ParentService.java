@@ -16,13 +16,7 @@ public class ParentService {
 	private ParentRepository parentRepository;
 	
 	public void save(Principal principal, String parentId, String name,String phoneNumber) {
-		Parent parent=new Parent();
-		parent.setPrincipal(principal);
-		parent.setName(name);
-		parent.setParentId(parentId);
-		parent.setPhoneNumber(phoneNumber);
-		
-		parentRepository.save(parent);
+		parentRepository.save(Parent.instance(parentId, name, phoneNumber, principal));
 		
 	}
 	

@@ -15,11 +15,7 @@ public class SubjectService {
 	private SubjectRepository subjectRepository;
 	
 	public void save(String subjectId, String name) {
-		Subject subject=new Subject();
-		subject.setName(name);
-		subject.setSubjectId(subjectId);
-		
-		subjectRepository.save(subject);
+		subjectRepository.save(Subject.instance(subjectId, name));
 	}
 	public List<Subject> findAll(){
 		return subjectRepository.findAll();

@@ -19,24 +19,22 @@ public class Test {
 	@OneToMany(mappedBy = "id.test",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
 
+	private Test(String testId, String name) {
+		super();
+		this.testId = testId;
+		this.name = name;
+	}
+	
+	public static Test instance(String testId, String name) {
+		return new Test(testId, name);
+	}
+	
 	public String getTestId() {
 		return testId;
 	}
 
-	public void setTestId(String testId) {
-		this.testId = testId;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setMarks(Set<Mark> marks) {
-		this.marks = marks;
 	}
 
 	@Override

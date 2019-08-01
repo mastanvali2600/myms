@@ -22,27 +22,28 @@ public class Subject {
 	
 	@OneToMany(mappedBy = "id.subject")
 	private Set<Attendance> attendances;
-	
-	public String getSubjectId() {
-		return subjectId;
-	}
-	public void setSubjectId(String subjectId) {
+
+	private Subject(String subjectId, String name) {
+		super();
 		this.subjectId = subjectId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public void setMarks(Set<Mark> marks) {
-		this.marks = marks;
+	public static Subject instance(String subjectId, String name) {
+		return new Subject(subjectId, name);
 	}
+
+	public String getSubjectId() {
+		return subjectId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	@Override
 	public String toString() {
 		return "Subject [subjectId=" + subjectId + ", name=" + name + ", marks=" + marks + ", homeWorks=" + homeWorks
 				+ ", attendances=" + attendances + "]";
 	}
-
 }

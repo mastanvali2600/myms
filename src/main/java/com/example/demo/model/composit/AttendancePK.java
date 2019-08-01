@@ -31,30 +31,27 @@ public class AttendancePK implements Serializable{
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "subjectId")
 	@JsonIdentityReference(alwaysAsId = true)
 	private Subject subject;
-
+	
+	private AttendancePK(String homeWorkDate, Student student, Subject subject) {
+		this.homeWorkDate = homeWorkDate;
+		this.student = student;
+		this.subject = subject;
+	}
+	public static AttendancePK instance(String homeWorkDate, Student student, Subject subject) {
+		return new AttendancePK(homeWorkDate, student, subject);
+	}
 
 	public String getHomeWorkDate() {
 		return homeWorkDate;
 	}
 
-	public void setHomeWorkDate(String homeWorkDate) {
-		this.homeWorkDate = homeWorkDate;
-	}
 
 	public Student getStudent() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
 	public Subject getSubject() {
 		return subject;
-	}
-
-	public void setSubject(Subject subject) {
-		this.subject = subject;
 	}
 
 	@Override

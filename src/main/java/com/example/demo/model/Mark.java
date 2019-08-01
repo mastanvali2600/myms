@@ -13,24 +13,27 @@ public class Mark {
 	private Long marks;
 	private Long outMarks;
 	
+	private Mark(MarkPrimaryKey id, Long marks, Long outMarks) {
+		super();
+		this.id = id;
+		this.marks = marks;
+		this.outMarks = outMarks;
+	}
+
+	public static Mark instance(MarkPrimaryKey id, Long marks, Long outMarks) {
+		return new Mark(id, marks, outMarks);
+	}
+
 	public MarkPrimaryKey getId() {
 		return id;
 	}
-	public void setId(MarkPrimaryKey id) {
-		this.id = id;
-	}
+
 	public Long getMarks() {
 		return marks;
 	}
-	public void setMarks(Long marks) {
-		this.marks = marks;
-	}
+
 	public Long getOutMarks() {
 		return outMarks;
 	}
-	public void setOutMarks(Long outMarks) {
-		this.outMarks = outMarks;
-	}
-	
 	
 }

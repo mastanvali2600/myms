@@ -42,52 +42,37 @@ public class Student {
 	@OneToMany(mappedBy = "id.student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Attendance> attendance;
 
-	public String getStudentId() {
-		return studentId;
+	private Student(String studentId, String rollNumber, String name, ClassInfo classInfo, Parent parent) {
+		super();
+		this.studentId = studentId;
+		this.rollNumber = rollNumber;
+		this.name = name;
+		this.classInfo = classInfo;
+		this.parent = parent;
+	}
+	
+	public static Student instance(String studentId, String rollNumber, String name, ClassInfo classInfo, Parent parent) {
+		return new Student(studentId, rollNumber, name, classInfo, parent);
 	}
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+	public String getStudentId() {
+		return studentId;
 	}
 
 	public String getRollNumber() {
 		return rollNumber;
 	}
 
-	public void setRollNumber(String rollNumber) {
-		this.rollNumber = rollNumber;
-	}
-
-	public Parent getParent() {
-		return parent;
-	}
-
-	public void setParent(Parent parent) {
-		this.parent = parent;
-	}
-	
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public ClassInfo getClassInfo() {
 		return classInfo;
 	}
 
-	public void setClassInfo(ClassInfo classInfo) {
-		this.classInfo = classInfo;
-	}
-
-	public void setMarks(Set<Mark> marks) {
-		this.marks = marks;
-	}
-	
-	public void setAttendance(Set<Attendance> attendance) {
-		this.attendance = attendance;
+	public Parent getParent() {
+		return parent;
 	}
 
 	@Override
@@ -95,6 +80,5 @@ public class Student {
 		return "Student [studentId=" + studentId + ", rollNumber=" + rollNumber + ", name=" + name + ", classInfo="
 				+ classInfo + ", parent=" + parent + ", marks=" + marks + ", attendance=" + attendance + "]";
 	}
-
 
 }
