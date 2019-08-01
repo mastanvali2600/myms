@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.ClassInfo;
-import com.example.demo.model.Faculty;
 import com.example.demo.model.Parent;
 import com.example.demo.model.Principal;
 import com.example.demo.model.School;
@@ -30,7 +29,7 @@ import com.example.demo.service.SubjectService;
 import com.example.demo.service.TestService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/principals")
 public class PrincipalController {
 	
 	@Autowired
@@ -71,7 +70,7 @@ public class PrincipalController {
 		addPrincipalList();
 		return "home1";
 	}
-	@GetMapping(value = "/principals")
+	@GetMapping(value = "/all")
 	public List<Principal> findAll(){
 		return principalService.findAll();
 	}
@@ -89,7 +88,7 @@ public class PrincipalController {
 		Principal principal2= principalService.findOne("ABCDE");
 		
 		facultyService.save("fc1", "Sriman", "sriman@gmail.com", "sriman", "Hyd", "8888888888", principal2);		
-		Faculty faculty=facultyService.findOne("fc1");
+		
 		
 		parentService.save(principal, "p1", "Subhani", "7777777777");
 		Parent parent=parentService.findOne("p1");
@@ -112,9 +111,9 @@ public class PrincipalController {
 		markService.save(student, subject, test, 10l, 100l);
 		markService.save(student, subject, test1, 90l, 100l);
 		
-		homeWorkService.save(classInfo, subject, new Date(), "To day you free");
+		homeWorkService.save(classInfo, subject, LocalDate.now(), "To day you free");
 		
-		attendanceService.save(new Date(), student, subject, false);
+		attendanceService.save(LocalDate.now(), student, subject, false);
 		
 	}
 }

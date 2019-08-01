@@ -11,12 +11,12 @@ import com.example.demo.model.HomeWork;
 import com.example.demo.service.HomeWorkService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/homeworks")
 public class HomeWorkController {
 	@Autowired
 	private HomeWorkService homeWorkService;
 	
-	@GetMapping(value = "/homeworks")
+	@GetMapping(value = "/all")
 	public List<HomeWork> findAll(){
 		return homeWorkService.findAll();
 	}

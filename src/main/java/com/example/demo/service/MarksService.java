@@ -25,7 +25,7 @@ public class MarksService {
 		markPrimaryKey.setTest(test);
 		
 		Mark mark=new Mark();
-		mark.setMarkPrimaryKey(markPrimaryKey);
+		mark.setId(markPrimaryKey);
 		mark.setMarks(marks);
 		mark.setOutMarks(outMarks);
 		

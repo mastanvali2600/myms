@@ -11,12 +11,12 @@ import com.example.demo.model.Subject;
 import com.example.demo.service.SubjectService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/subjects")
 public class SubjectController {
 	@Autowired
 	private SubjectService subjectService;
 	
-	@GetMapping(value = "/subjects")
+	@GetMapping(value = "/all")
 	public List<Subject> findAll(){
 		return subjectService.findAll();
 	}

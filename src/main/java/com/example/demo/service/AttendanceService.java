@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,14 @@ public class AttendanceService {
 	@Autowired
 	private AttendanceRepository attendanceRepository;
 
-	public void save(Date date, Student student, Subject subject, boolean isPresent) {
+	public void save(LocalDate date, Student student, Subject subject, boolean isPresent) {
 		AttendancePK attendancePK = new AttendancePK();
-		attendancePK.setHomeWorkDate(date);
+		attendancePK.setHomeWorkDate(date.format(DateTimeFormatter.ofPattern("dd-MM-YYYY")));
 		attendancePK.setStudent(student);
 		attendancePK.setSubject(subject);
 
 		Attendance attendance = new Attendance();
-		attendance.setAttendancePK(attendancePK);
+		attendance.setId(attendancePK);;
 		attendance.setPresent(isPresent);
 
 		attendanceRepository.save(attendance);

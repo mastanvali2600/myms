@@ -1,11 +1,15 @@
 package com.example.demo.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class Parent {
@@ -14,10 +18,12 @@ public class Parent {
 	private String name;
 	private String phoneNumber;
 	@OneToOne
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "principalJoinId")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Principal principal;
 	
 	@OneToMany(mappedBy = "parent")
-	private List<Student> students;
+	private Set<Student> students;
 	
 	public String getParentId() {
 		return parentId;
@@ -44,10 +50,7 @@ public class Parent {
 		this.principal = principal;
 	}
 	
-	public List<Student> getStudents() {
-		return students;
-	}
-	public void setStudents(List<Student> students) {
+	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
 	@Override

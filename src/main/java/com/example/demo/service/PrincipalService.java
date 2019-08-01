@@ -7,17 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Principal;
 import com.example.demo.model.School;
-import com.example.demo.repository.AttendanceRepository;
-import com.example.demo.repository.ClassInfoRepository;
-import com.example.demo.repository.FacultyRepository;
-import com.example.demo.repository.HomeWorkRepository;
-import com.example.demo.repository.MarksRepository;
-import com.example.demo.repository.ParentRepository;
 import com.example.demo.repository.PrincipalRepository;
-import com.example.demo.repository.SchoolRepository;
-import com.example.demo.repository.StudentRepository;
-import com.example.demo.repository.SubjectRepository;
-import com.example.demo.repository.TestRepository;
 
 @Service
 public class PrincipalService {

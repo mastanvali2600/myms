@@ -9,16 +9,16 @@ import com.example.demo.model.composit.HomeWorkPK;
 public class HomeWork {
 
 	@EmbeddedId
-	private HomeWorkPK homeWorkPK;
+	private HomeWorkPK id;
 	
 	private String homeWorkinfo;
 
-	public HomeWorkPK getHomeWorkPK() {
-		return homeWorkPK;
+	public HomeWorkPK getId() {
+		return id;
 	}
 
-	public void setHomeWorkPK(HomeWorkPK homeWorkPK) {
-		this.homeWorkPK = homeWorkPK;
+	public void setId(HomeWorkPK id) {
+		this.id = id;
 	}
 
 	public String getHomeWorkinfo() {
@@ -31,7 +31,7 @@ public class HomeWork {
 
 	@Override
 	public String toString() {
-		return "HomeWork [homeWorkPK=" + homeWorkPK + ", homeWorkinfo=" + homeWorkinfo + "]";
+		return "HomeWork [homeWorkPK=" + id + ", homeWorkinfo=" + homeWorkinfo + "]";
 	}
 	
 }

@@ -8,16 +8,16 @@ import com.example.demo.model.composit.AttendancePK;
 @Entity
 public class Attendance {
 	@EmbeddedId
-	private AttendancePK attendancePK;
+	private AttendancePK id;
 	
 	private boolean isPresent;
 
-	public AttendancePK getAttendancePK() {
-		return attendancePK;
+	public AttendancePK getId() {
+		return id;
 	}
 
-	public void setAttendancePK(AttendancePK attendancePK) {
-		this.attendancePK = attendancePK;
+	public void setId(AttendancePK id) {
+		this.id = id;
 	}
 
 	public boolean isPresent() {
@@ -30,7 +30,7 @@ public class Attendance {
 
 	@Override
 	public String toString() {
-		return "Attendance [attendancePK=" + attendancePK + ", isPresent=" + isPresent + "]";
+		return "Attendance [attendancePK=" + id + ", isPresent=" + isPresent + "]";
 	}
 	
 	

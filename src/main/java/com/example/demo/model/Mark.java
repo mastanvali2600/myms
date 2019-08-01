@@ -8,15 +8,16 @@ import com.example.demo.model.composit.MarkPrimaryKey;
 @Entity
 public class Mark {
 	@EmbeddedId
-	private MarkPrimaryKey markPrimaryKey;
+	private MarkPrimaryKey id;
 	
 	private Long marks;
 	private Long outMarks;
-	public MarkPrimaryKey getMarkPrimaryKey() {
-		return markPrimaryKey;
+	
+	public MarkPrimaryKey getId() {
+		return id;
 	}
-	public void setMarkPrimaryKey(MarkPrimaryKey markPrimaryKey) {
-		this.markPrimaryKey = markPrimaryKey;
+	public void setId(MarkPrimaryKey id) {
+		this.id = id;
 	}
 	public Long getMarks() {
 		return marks;

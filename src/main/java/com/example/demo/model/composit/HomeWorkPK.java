@@ -1,7 +1,6 @@
 package com.example.demo.model.composit;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,6 +9,9 @@ import javax.persistence.ManyToOne;
 
 import com.example.demo.model.ClassInfo;
 import com.example.demo.model.Subject;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Embeddable
 public class HomeWorkPK implements Serializable{
@@ -17,21 +19,25 @@ public class HomeWorkPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(nullable = false,updatable = false)
-	private Date homeWorkDate;
+	private String homeWorkDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "classSectionId")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "classSectionId")
+	@JsonIdentityReference(alwaysAsId = true)
 	private ClassInfo classInfo;
 	
 	@ManyToOne
 	@JoinColumn(name = "subjectId")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "subjectId")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Subject subject;
 
-	public Date getHomeWorkDate() {
+	public String getHomeWorkDate() {
 		return homeWorkDate;
 	}
 
-	public void setHomeWorkDate(Date homeWorkDate) {
+	public void setHomeWorkDate(String homeWorkDate) {
 		this.homeWorkDate = homeWorkDate;
 	}
 

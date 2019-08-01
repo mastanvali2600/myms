@@ -17,7 +17,7 @@ public class ClassInfoService {
 		ClassInfo classInfo=new ClassInfo();
 		classInfo.setClassName(className);
 		classInfo.setSectionName(sectionName);
-		classInfo.setClassSectionId(classInfo.createPK(className, sectionName));
+		classInfo.setClassSectionId(ClassInfo.createPK(className, sectionName));
 		classInfoRepository.save(classInfo);
 	}
 	

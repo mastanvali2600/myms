@@ -6,8 +6,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class Student {
@@ -20,15 +25,21 @@ public class Student {
 	private String name;
 	
 	@ManyToOne
+	@JoinColumn(name = "classSectionId")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "classSectionId")
+	@JsonIdentityReference(alwaysAsId = true)
 	private ClassInfo classInfo;
 	
 	@ManyToOne
+	@JoinColumn(name = "parentId")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "parentId")
+	@JsonIdentityReference(alwaysAsId = true)
 	private Parent parent;
 	
-	@OneToMany(mappedBy = "markPrimaryKey.students",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id.students",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
 	
-	@OneToMany(mappedBy = "attendancePK.student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id.student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Attendance> attendance;
 
 	public String getStudentId() {
@@ -71,19 +82,10 @@ public class Student {
 		this.classInfo = classInfo;
 	}
 
-	
-	public Set<Mark> getMarks() {
-		return marks;
-	}
-
 	public void setMarks(Set<Mark> marks) {
 		this.marks = marks;
 	}
 	
-	public Set<Attendance> getAttendance() {
-		return attendance;
-	}
-
 	public void setAttendance(Set<Attendance> attendance) {
 		this.attendance = attendance;
 	}

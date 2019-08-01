@@ -14,13 +14,13 @@ public class Subject {
 	private String subjectId;
 	private String name;
 	
-	@OneToMany(mappedBy = "markPrimaryKey.subject",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id.subject",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
 
-	@OneToMany(mappedBy = "homeWorkPK.subject")
+	@OneToMany(mappedBy = "id.subject")
 	private Set<HomeWork> homeWorks;
 	
-	@OneToMany(mappedBy = "attendancePK.subject")
+	@OneToMany(mappedBy = "id.subject")
 	private Set<Attendance> attendances;
 	
 	public String getSubjectId() {
@@ -36,9 +36,6 @@ public class Subject {
 		this.name = name;
 	}
 	
-	public Set<Mark> getMarks() {
-		return marks;
-	}
 	public void setMarks(Set<Mark> marks) {
 		this.marks = marks;
 	}

@@ -11,13 +11,13 @@ import com.example.demo.model.Parent;
 import com.example.demo.service.ParentService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/parents")
 public class ParentController {
 
 	@Autowired
 	private ParentService parentService;
 	
-	@GetMapping(value = "parents")
+	@GetMapping(value = "/all")
 	public List<Parent> findAll(){
 		return parentService.findAll();
 	}

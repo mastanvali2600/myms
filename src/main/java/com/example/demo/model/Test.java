@@ -16,7 +16,7 @@ public class Test {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "markPrimaryKey.test",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "id.test",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Set<Mark> marks;
 
 	public String getTestId() {
@@ -33,11 +33,6 @@ public class Test {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	
-	public Set<Mark> getMarks() {
-		return marks;
 	}
 
 	public void setMarks(Set<Mark> marks) {

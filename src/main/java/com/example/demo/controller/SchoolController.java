@@ -11,12 +11,12 @@ import com.example.demo.model.School;
 import com.example.demo.service.SchoolService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/schools")
 public class SchoolController {
 	@Autowired
 	private SchoolService schoolService;
 
-	@GetMapping(value = "/schools")
+	@GetMapping(value = "/all")
 	public List<School> findAll() {
 		return schoolService.findAll();
 	}

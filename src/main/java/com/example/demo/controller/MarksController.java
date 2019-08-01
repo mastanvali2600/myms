@@ -11,13 +11,13 @@ import com.example.demo.model.Mark;
 import com.example.demo.service.MarksService;
 
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/rest/marks")
 public class MarksController {
 
 	@Autowired
 	private MarksService marksService;
 	
-	@GetMapping(value = "/marks")
+	@GetMapping(value = "/all")
 	public List<Mark> findAll(){
 		return marksService.findAll();
 	}

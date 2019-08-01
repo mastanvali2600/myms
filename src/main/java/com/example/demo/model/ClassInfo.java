@@ -20,7 +20,7 @@ public class ClassInfo {
 	@OneToMany(mappedBy = "classInfo")
 	private List<Student> students;
 	
-	@OneToMany(mappedBy = "homeWorkPK.classInfo")
+	@OneToMany(mappedBy = "id.classInfo")
 	private Set<HomeWork> homeWorks;
 
 	public String getClassSectionId() {
@@ -47,15 +47,13 @@ public class ClassInfo {
 		this.sectionName = sectionName;
 	}
 
-	public List<Student> getStudents() {
-		return students;
-	}
+	
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
 	
-	public String createPK(String className,String sectionName) {
+	public static String createPK(String className,String sectionName) {
 		return className+"-"+sectionName;
 	}
 
