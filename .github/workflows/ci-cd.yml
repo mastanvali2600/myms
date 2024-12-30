@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Docker image
-        run: docker push ghcr.io/your-repo/myms:latest
+        run: docker push ghcr.io/myms/myms:latest
 
       - name: Deploy to Kubernetes
         env:
